@@ -1,0 +1,148 @@
+buildscript {
+    apply from: '../dependencies.gradle'
+    addRepos(repositories)
+}
+
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+apply plugin: "realm-android"
+
+android {
+    namespace 'com.movies.watchme'
+    compileSdk build_versions.compile_sdk
+
+    defaultConfig {
+        applicationId build_versions.application_id
+        minSdk build_versions.min_sdk
+        targetSdk build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "API_KEY", '"44815b7d00914e0936d40ca6869c21e3"')
+        buildConfigField("String", "BASE_URL", '"https://api.themoviedb.org/3/"')
+        buildConfigField("String", "IMAGE_BASE_URL", '"https://image.tmdb.org/t/p/"')
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+    buildFeatures {
+        viewBinding true
+        prefab = true
+    }
+    // For kotlinx-coroutines-core
+    packagingOptions {
+        resources.excludes += "DebugProbesKt.bin"
+    }
+    lintOptions {
+        // set to true to turn off analysis progress reporting by lint
+        quiet true
+        // if true, stop the gradle build if errors are found
+        abortOnError false
+        // if true, only report errors
+        ignoreWarnings false
+        disable 'MissingTranslation'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+kapt {
+    correctErrorTypes = true
+}
+
+dependencies {
+    implementation deps.core_ktx
+    //  implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    //  implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+
+    /*Testing Tools*/
+    testImplementation deps.junit
+    // required if you want to use Mockito for unit tests
+    testImplementation deps.mockito.core
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation deps.espresso.core
+
+    /*Android Support*/
+    implementation(deps.constraint_layout) {
+        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+    }
+    implementation(deps.appcompat) {
+        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+    }
+    implementation(deps.legacy_support_v4) {
+        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+        exclude group: 'com.android.support'
+    }
+    implementation(deps.multidex) {
+        exclude group: 'com.android.support'
+    }
+    implementation(deps.cardview) {
+        exclude group: 'com.android.support'
+    }
+    implementation(deps.recyclerview) {
+        exclude group: 'com.android.support'
+    }
+    implementation(deps.material) {
+        exclude group: 'com.android.support'
+    }
+
+    /*Kotlin*/
+    implementation deps.kotlin.stdlib
+    implementation deps.kotlin.reflect
+
+    /*Hilt*/
+    implementation deps.hilt.runtime
+    kapt deps.hilt.compiler
+
+    /*Android ViewModel - LifeCycle*/
+    implementation deps.lifecycle.runtime_ktx
+    implementation deps.lifecycle.viewmodel_ktx
+    implementation deps.lifecycle.compose
+
+    implementation deps.coroutines.core
+    implementation deps.coroutines.android
+
+    /*Retrofit 2*/
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.gson
+    implementation deps.retrofit.rxjava
+    implementation deps.retrofit.mock
+
+    /*OkHttp3*/
+    implementation deps.okHttp3.runtime
+    implementation deps.okHttp3.bom
+    implementation deps.okHttp3.logging_interceptor
+
+    implementation deps.activity.runtime_ktx
+
+    /*Glide*/
+    implementation(deps.glide.runtime) {
+        exclude group: "com.android.support"
+    }
+    kapt deps.glide.compiler
+    implementation deps.glide.annotations
+    implementation deps.glide.okhttp3
+
+    implementation deps.gson
+    implementation deps.otto
+
+    /*Dimens for various resolutions*/
+    implementation deps.activity.sdp_android
+    implementation deps.activity.ssp_android
+}

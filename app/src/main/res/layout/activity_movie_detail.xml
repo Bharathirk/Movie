@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/black"
+  >
+
+  <CheckBox
+    android:id="@+id/cb_fav_unfav"
+    android:layout_width="@dimen/_30sdp"
+    android:layout_height="@dimen/_30sdp"
+    android:layout_margin="@dimen/_10sdp"
+    android:background="@drawable/selector_fav_unfav"
+    android:button="@null"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    />
+
+  <TextView
+    android:id="@+id/tv_no_data"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/no_date_found"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/toolbar"
+    />
+
+  <androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbar"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintEnd_toStartOf="@+id/cb_fav_unfav"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    style="@style/ToolbarTheme"
+    />
+
+  <androidx.core.widget.NestedScrollView
+    android:id="@+id/scrollView"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:visibility="visible"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/toolbar"
+    >
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      >
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <ImageView
+          android:id="@+id/img_banner"
+          android:layout_width="0dp"
+          android:layout_height="@dimen/_200sdp"
+          android:contentDescription="@string/app_name"
+          android:scaleType="center"
+          android:src="@android:color/background_dark"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          />
+
+        <TextView
+          android:id="@+id/tv_release_date"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="16dp"
+          android:textColor="@color/white"
+          android:textSize="@dimen/_11ssp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintStart_toStartOf="@+id/tv_title"
+          app:layout_constraintTop_toBottomOf="@+id/tv_title"
+          tools:text="2019"
+          />
+
+
+        <TextView
+          android:id="@+id/tv_genre"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
+          android:textColor="@color/white"
+          android:textSize="@dimen/_11ssp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintStart_toStartOf="@+id/tv_title"
+          app:layout_constraintTop_toBottomOf="@+id/tv_release_date"
+          tools:text="Animation . Crime"
+          />
+
+        <TextView
+          android:id="@+id/tv_description"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="32dp"
+          android:layout_marginEnd="@dimen/_10sdp"
+          android:layout_marginTop="@dimen/_10sdp"
+          android:textColor="@color/white"
+          android:textSize="@dimen/_13ssp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="@+id/tv_genre"
+          app:layout_constraintTop_toBottomOf="@+id/tv_genre"
+          tools:text="A documentary about World War I with never-before-seen footage to commemorate the centennial of the end of the war."
+          />
+
+        <TextView
+          android:id="@+id/tv_title"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="@dimen/_10sdp"
+          android:layout_marginStart="@dimen/_10sdp"
+          android:layout_marginTop="@dimen/_10sdp"
+          android:ellipsize="end"
+          android:maxLines="2"
+          android:textColor="@color/white"
+          android:textSize="@dimen/_20ssp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/img_banner"
+          tools:text="They Shall Not Grow Old"
+          />
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+  </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">WatchMe</string>
+    <string name="app_title_name">Watch Me</string>
+    <string name="splash_app_name">Watch Me</string>
+
+    <!--Error Messages-->
+    <string name="error_network_connectivity">Could not connect to Server please enable internet
+    connection and try again</string>
+
+    <!--Custom Progress Dialog-->
+    <string name="progress_dialog_message">Please wait…</string>
+    <string name="btn_done_label">Done</string>
+
+
+    <string name="genres">Action • Drama • Fiction • History</string>
+
+    <string name="popular">Popular</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="now_playing">Now Playing</string>
+
+
+    <string name="no_date_found">No data found</string>
+    <string name="menu_search">Search</string>
+
+    <string name="fav_movies_title">Favourite Movies</string>
+</resources>

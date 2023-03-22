@@ -1,0 +1,66 @@
+package com.movies.watchme.presentation.home.adapters
+
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
+import android.view.View.OnClickListener
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.movies.watchme.data.models.Movie
+import com.movies.watchme.databinding.ItemMovieBinding
+import com.movies.watchme.presentation.home.adapters.PopularMovieAdapter.PopularMovieViewHolder
+
+class PopularMovieAdapter(private val context: Context, private val listener: MovieClickListener) :
+  RecyclerView.Adapter<PopularMovieViewHolder>() {
+
+  private val movies = mutableListOf<Movie>()
+
+  fun setTopRatedMovies(movies: List<Movie>) {
+    this.movies.clear()
+    this.movies.addAll(movies)
+    notifyDataSetChanged()
+  }
+
+  interface MovieClickListener {
+    fun onMovieClicked(movie: Movie)
+  }
+
+  inner class PopularMovieViewHolder(private val binding: ItemMovieBinding) :
+    RecyclerView.ViewHolder(binding.root), OnClickListener {
+
+    init {
+      binding.root.setOnClickListener(this)
+    }
+
+    fun bindDataToViews(movie: Movie) {
+      Glide.with(context).load(movie.getPosterUrl()).into(binding.posterImage)
+      binding.name.text = movie.title
+    }
+
+    override fun onClick(p0: View?) {
+      val position = bindingAdapterPosition
+      if (position == RecyclerView.NO_POSITION) {
+        return
+      }
+      listener.onMovieClicked(movies[position])
+    }
+  }
+
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularMovieViewHolder {
+    return PopularMovieViewHolder(
+      ItemMovieBinding.inflate(
+        LayoutInflater.from(context), parent, false
+      )
+    )
+  }
+
+  override fun getItemCount(): Int {
+    return movies.size
+  }
+
+  override fun onBindViewHolder(holder: PopularMovieViewHolder, position: Int) {
+    val movie = movies[position]
+    holder.bindDataToViews(movie)
+  }
+}

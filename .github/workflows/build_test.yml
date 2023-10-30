@@ -2,12 +2,8 @@ name: Build
 
 on:
   push:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: "Build version"
-        required: true
-        default: "1.0"
+    tags:
+      - "*"
 
 jobs:
   build:

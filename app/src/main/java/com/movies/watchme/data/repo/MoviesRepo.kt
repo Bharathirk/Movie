@@ -56,7 +56,12 @@ class MoviesRepo @Inject constructor(
     searchQuery: String,
   ): List<Movie> = withContext(Dispatchers.IO) {
     val movieResponse = api.fetchMoviesBySearchQuery(searchQuery)
-    movieResponse.movieList.toPojos()
+    val moviiii = movieResponse.movieList.toPojos()
+    (if (moviiii.size !== 0){
+      movieResponse.movieList.toPojos()
+    }else{
+      null
+    })!!
   }
 
   /*----------------------------------------- Database Operations Starts -------------------------------- */

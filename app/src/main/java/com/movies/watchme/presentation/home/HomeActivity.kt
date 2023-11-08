@@ -8,6 +8,8 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.ViewGroup
+import android.widget.Button
 import androidx.activity.viewModels
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -51,7 +53,19 @@ class HomeActivity : BaseActivity(), MovieClickListener, PopularMovieAdapter.Mov
     setupMenuProvider()
     setViews()
     observeMovies()
+    val packageName = applicationContext.packageName
+    println( "Bharathi" + packageName)
     viewModel.fetchMovies()
+    val crashButton = Button(this)
+    crashButton.text = "Test Crash"
+    crashButton.setOnClickListener {
+      throw RuntimeException("Test Crash") // Force a crash
+    }
+
+    addContentView(crashButton, ViewGroup.LayoutParams(
+      ViewGroup.LayoutParams.MATCH_PARENT,
+      ViewGroup.LayoutParams.WRAP_CONTENT))
+
   }
 
   private fun setupMenuProvider() {

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "521226356140",
+    "project_id": "watchme-f09b1",
+    "storage_bucket": "watchme-f09b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:521226356140:android:40794f30c7ad7a07782609",
+        "android_client_info": {
+          "package_name": "com.movies.watchme.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARY9qstLvSW_MPQwvmVvOGP_b6-9UmWIs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:521226356140:android:117601255a740f0e782609",
+        "android_client_info": {
+          "package_name": "com.movies.watchme.stag"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARY9qstLvSW_MPQwvmVvOGP_b6-9UmWIs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

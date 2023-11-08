@@ -57,19 +57,19 @@ android {
         disable 'MissingTranslation'
     }
 
-//    flavorDimensions "env"
-//
-//    productFlavors {
-//        dev {
-//            dimension "env"
-//            applicationIdSuffix ".dev"
-//        }
-//        stag {
-//            dimension "env"
-//            applicationIdSuffix ".stag"
-//        }
-//
-//    }
+    flavorDimensions "env"
+
+    productFlavors {
+        dev {
+            dimension "env"
+            applicationIdSuffix ".dev"
+        }
+        stag {
+            dimension "env"
+            applicationIdSuffix ".stag"
+        }
+
+    }
 
 //    signingConfigs {
 //        release {

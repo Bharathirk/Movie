@@ -23,7 +23,7 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Get Action Path
-      run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+      run: $"GITHUB_ACTION_PATH/script.sh"
       shell: bash
     - name: Generate APK
       run: ./gradlew assembleRelease
